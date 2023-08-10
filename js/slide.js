@@ -81,51 +81,51 @@
             // 데스크탑: 마우스 터치 드래그 앤 드롭
             // 태블릿 & 모바일: 손가락(핑거링) 터치 스와이프 이벤트
             // 태블릿 & 모바일: 손가락(핑거링) 드래그 앤 드롭
-            // slideContainer.on({
-            //     mousedown(e){
-            //         winW = $(window).innerWidth(); // 마우스 다운하면 창너비 가져오기
-            //         sizeX = winW / 2;
-            //         mouseDown = e.clientX; 
-            //         // 슬라이드랩퍼박스 좌측 좌표값 -1903
-            //         // 계속 드래그시 슬라이드 박스 좌측값 설정한다.
-            //         dragStart = e.clientX - (slideWrap.offset().left+winW);  // 좌측끝 0 시작
-            //         mDown = true; // 1. 드래그 시작 
-            //         slideView.css({ cursor: 'grabbing' }); // 잡는다 (드래그)
-            //     },
-            //     mouseup(e){
-            //         mouseUp = e.clientX;        
+            slideContainer.on({
+                mousedown(e){
+                    winW = $(window).innerWidth(); // 마우스 다운하면 창너비 가져오기
+                    sizeX = winW / 2;
+                    mouseDown = e.clientX; 
+                    // 슬라이드랩퍼박스 좌측 좌표값 -1903
+                    // 계속 드래그시 슬라이드 박스 좌측값 설정한다.
+                    dragStart = e.clientX - (slideWrap.offset().left+winW);  // 좌측끝 0 시작
+                    mDown = true; // 1. 드래그 시작 
+                    slideView.css({ cursor: 'grabbing' }); // 잡는다 (드래그)
+                },
+                mouseup(e){
+                    mouseUp = e.clientX;        
                     
-            //         if( mouseDown-mouseUp > sizeX ){ // 900초과 => 900 이하
-            //             clearInterval(setId); // 클릭시 일시중지
-            //             if(!slideWrap.is(':animated')){
-            //                 nextCount();
-            //             }                            
-            //         }
+                    if( mouseDown-mouseUp > sizeX ){ // 900초과 => 900 이하
+                        clearInterval(setId); // 클릭시 일시중지
+                        if(!slideWrap.is(':animated')){
+                            nextCount();
+                        }                            
+                    }
                     
-            //         if( mouseDown-mouseUp < -sizeX ){  // -900 미만 => -900이상
-            //             clearInterval(setId); // 클릭시 일시중지
-            //             if(!slideWrap.is(':animated')){
-            //                 prevCount();
-            //             }                            
-            //         }
+                    if( mouseDown-mouseUp < -sizeX ){  // -900 미만 => -900이상
+                        clearInterval(setId); // 클릭시 일시중지
+                        if(!slideWrap.is(':animated')){
+                            prevCount();
+                        }                            
+                    }
 
-            //         // -900 >= 이상이고 <= 900 이하이면 원래대로 제자리로 찾아간다.
-            //         if(  mouseDown-mouseUp >= -sizeX  &&  mouseDown-mouseUp <= sizeX ){
-            //             mainSlide();
-            //         }
+                    // -900 >= 이상이고 <= 900 이하이면 원래대로 제자리로 찾아간다.
+                    if(  mouseDown-mouseUp >= -sizeX  &&  mouseDown-mouseUp <= sizeX ){
+                        mainSlide();
+                    }
 
-            //         mDown = false;  // 2. 드래그 끝을 알려주는 마우스 업상태
-            //         slideView.css({ cursor: 'grab' }); // 놓는다 손바닥 펼친다.
-            //     },
-            //     mousemove(e){
-            //         if(!mDown) return;   // 3. true가 아니면 마우스 다운이 있어야만 드래그 가능                 
-            //         // if(mDown!==true) return;   // true가 아니면 마우스 다운이 있어야만 드래그 가능                 
-            //         // if(mDown===false) return;   // false 이면 마우스 다운이 있어야만 드래그 가능                 
+                    mDown = false;  // 2. 드래그 끝을 알려주는 마우스 업상태
+                    slideView.css({ cursor: 'grab' }); // 놓는다 손바닥 펼친다.
+                },
+                mousemove(e){
+                    if(!mDown) return;   // 3. true가 아니면 마우스 다운이 있어야만 드래그 가능                 
+                    // if(mDown!==true) return;   // true가 아니면 마우스 다운이 있어야만 드래그 가능                 
+                    // if(mDown===false) return;   // false 이면 마우스 다운이 있어야만 드래그 가능                 
                                          
-            //         dragEnd = e.clientX; // 4. 드래그 끝 좌표값
-            //         slideWrap.css({left:  dragEnd-dragStart }); // 5. 슬라이드 드래그 이동 디롭( 드래그끝 좌표값 - 드래그시작 좌표값 )
-            //     }
-            // })
+                    dragEnd = e.clientX; // 4. 드래그 끝 좌표값
+                    slideWrap.css({left:  dragEnd-dragStart }); // 5. 슬라이드 드래그 이동 디롭( 드래그끝 좌표값 - 드래그시작 좌표값 )
+                }
+            })
 
             // slideContainer 영역을 벗어나면  mouseup의 예외처리
             // 도큐먼트에서 예외처리
@@ -293,8 +293,8 @@
         section2(){
             // 0. 변수설정
             let cnt = 0;
-            const slideContainer = $('#section2 .slide-container');
             const section2Container = $('#section2 .container');
+            const slideContainer = $('#section2 .slide-container');
             const slideWrap = $('#section2 .slide-wrap');
             const slideView = $('#section2 .slide-view');
             const slide = $('#section2 .slide-view .slide');
@@ -305,7 +305,7 @@
             const subMenu = $('#section2 .sub-menu');
             const materialIcons = $('#section2  .select-btn .material-icons');
             const heightRate = 0.884545392; // 너비에대한 높이 비율
-            
+            let n = slide.length; // 10 개
             // 터치스와이프
             let touchStart = null;
             let touchEnd = null;
@@ -319,65 +319,59 @@
             let sizeX = 100;  // 드래그 길이
             let offsetL =   slideWrap.offset().left;  // 318 
             let slideWidth;
-            let n = slide.length; // 10개
+
             // slideWrap.offset().left 좌측 좌표값
             // console.log(  slideWrap.offset().left );
 
-
-
-            resizeFn(); // 로딩시 불러오기
+            resizeFn(); // 로딩시
             // 함수는 명령어의 묶음
             function resizeFn(){
-                winW = $(window).innerWidth(); // 창크기 값을 계속 보여준다.
-                // 1. 창너비 1642px 이하에서 padding-left 0으로 설정
-                if(winW <= 1642){
-                    // 1280 초과에서는 슬라이드 3개
-                    // 1280 이하에서는 슬라이드 1개만 노출
-                    if(winW > 1280){
-                        slideWidth = (section2Container.innerWidth()-0+20+20)/3;
-                        // 페이지 버튼 제어(개수) 8인 경우 / 10개인 경우
-                        n = slide.length-2; // 8 = 10-2
-                        pageBtn.css({ display: 'none'});
-                        for (let i=0; i<=8; i++){ 
-                            pageBtn.eq(i).css({ display: 'block'}); // 8개 보임
-                        }
+                winW = $(window).innerWidth(); // 창크기 계속 값을 보여준다.
+                // 창너비(window)가 1642 픽셀 이하에서 패딩 좌측 값 0으로 설정
+                if(winW <= 1642){ // 이하 winW <= 1642 
+                    if(winW > 1280){ // 1280 초과 에서는 슬라이드 3개  10/1-2
+                        slideWidth = (section2Container.innerWidth()-0+20+20)/3; 
+                        n = slide.length-2; //8 = 10-2
+                        // 페이지 버튼 제어(개수) 8개인 경우 / 10개인 경우
+                        pageBtn.css({ display: 'none' }); // 10개 모두 숨김
+                        for(let i=0; i<n; i++){
+                            pageBtn.eq(i).css({ display: 'block' }); // 8개만 보임
+                        }  
+                       
                         if(cnt>=7){
                             cnt=7;
-                        }
+                        }                     
                     }
-                    else{
-                        slideWidth = (section2Container.innerWidth()-0+20+20)/1;
-                        // 페이지 버튼 제어(개수) 8인 경우 / 10개인 경우
-                        n = slide.length;
-                            pageBtn.css({ display: 'block'}); // 10개 모두 보임
-                            cnt=0;
-                    }
+                    else{ // 1280 이하 에서는 슬라이드 1개
+                        slideWidth = (section2Container.innerWidth()-0+20+20)/1; 
+                        pageBtn.css({ display: 'block' }); // 10개 모두 숨김
+                    }                                          
                 }
-                else{ // 창너비 1642 초과
+                else{ // 1642 초과(보다 크다)
                     slideWidth = (section2Container.innerWidth()-198+20+20)/3;
-                }
-                
-
+                    pageBtn.css({ display: 'none' }); // 10개 모두 숨김
+                        for(let i=0; i<n; i++){
+                            pageBtn.eq(i).css({ display: 'block' }); // 8개만 보임
+                        }
+                    
+                }                
                 slideWrap.css({width: slideWidth*10 });
                 slide.css({width: slideWidth, height: slideWidth*heightRate });
-                slideH3.css({fontSize: slideWidth*0.084758371 });
-                slideH4.css({fontSize: slideWidth*0.035687735 });
-                // // 페이지 버튼 제어(개수) 8인 경우 / 10개인 경우
-                // pageBtn.eq(8).css({ display: 'none' });
-                // pageBtn.eq(9).css({ display: 'none' });
-                mainSlide(); // 슬라이드에 슬라이드너비 전달하기 위해 호출
+                slideH3.css({fontSize: slideWidth*0.07 });
+                slideH4.css({fontSize: slideWidth*0.03 });
+
+                mainSlide(); // 슬라이드에 슬라이드 너비 전달하기위해서 호출
             }
-           
-            // 반응형 => 가로 세로 1px이상 크기가 변경되면 실행
-            // 크기가 변경되지 않으면 실행x
+            
+            // 가로 세로 크기가 1픽셀만 이라도 변경되면 동작 구동(실행)이 된다.
+            // 가로 세로 크기가 변경이 안되면 영원히 그대로 구동이 없다.
             $(window).resize(function(){
                 resizeFn();
             });
 
 
 
-
-            // 데스크탑 터치스와이프 & 드래그앤드롭
+            // 데스크탑 터치 스와이프 & 드래그 & 드롭
             slideContainer.on({
                 mousedown(e){
                     slideView.css({ cursor: 'grabbing' }); // 잡는다
@@ -436,8 +430,7 @@
                 }
             })
 
-
-            // 태블릿&모바일 터치스와이프 & 드래그앤드롭
+            // 태블릿, 모바일 터치 스와이프 & 드래그 & 드롭
             slideContainer.on({
                 touchstart(e){
                     slideView.css({ cursor: 'grabbing' }); // 잡는다
@@ -469,8 +462,7 @@
                     slideWrap.css({left: dragEnd - dragStart });
 
                 }
-            }); 
-
+            });   
 
 
             // 셀렉트버튼 클릭 이벤트 => 토글 이벤트
@@ -495,7 +487,7 @@
             // 다음카운트함수
             function nextCount(){
                 cnt++;
-                if(cnt>7) {cnt=7};
+                if(cnt>n-1) {cnt=n-1};
                 mainSlide();
             }
 
@@ -513,6 +505,7 @@
                 $(this).on({
                     click(e){
                         e.preventDefault();
+                        console.log(idx);
                         cnt=idx;
                         mainSlide();
                     }

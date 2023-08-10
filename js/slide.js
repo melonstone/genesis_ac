@@ -334,17 +334,19 @@
                     // 1280 초과에서는 슬라이드 3개
                     // 1280 이하에서는 슬라이드 1개만 노출
                     if(winW > 1280){
-                        slideWidth = (section2Container.innerWidth())/3;
+                        slideWidth = (section2Container.innerWidth()-0+20+20)/3;
                         // 페이지 버튼 제어(개수) 8인 경우 / 10개인 경우
                         n = slide.length-2; // 8 = 10-2
                         pageBtn.css({ display: 'none'});
                         for (let i=0; i<=8; i++){ 
                             pageBtn.eq(i).css({ display: 'block'}); // 8개 보임
                         }
-                        cnt=0;
+                        if(cnt>=7){
+                            cnt=7;
+                        }
                     }
                     else{
-                        slideWidth = (section2Container.innerWidth())/1;
+                        slideWidth = (section2Container.innerWidth()-0+20+20)/1;
                         // 페이지 버튼 제어(개수) 8인 경우 / 10개인 경우
                         n = slide.length;
                             pageBtn.css({ display: 'block'}); // 10개 모두 보임

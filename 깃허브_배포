@@ -31,7 +31,7 @@ git config email.name "kyscoo@naver.com"
 http://
 https:// ssl 웹보안인증서
 
-https://github.com/melonstone/genesis.git
+https://github.com/melonstone/genesis_academy.git
 CORS
 프록시 서버
 오리진 헤더코딩
@@ -39,7 +39,7 @@ http:// kyscoo.co.kr/member.php
 http:// kyscoo.co.kr/member.jsp
 
 추가
-git remote add origin https://github.com/melonstone/genesis.git
+git remote add origin https://github.com/melonstone/genesis_academy.git
 
 오리진 주소 잘못 기입시
 삭제하고
@@ -47,19 +47,18 @@ git remote remove origin
 
 
 다시 추가한다.
-git remote add origin https://github.com/melonstone/genesis.git
+git remote add origin https://github.com/melonstone/genesis_academy.git
 
 
 확인
 git remote -v
-origin  https://github.com/melonstone/genesis.git (fetch)
-origin  https://github.com/melonstone/genesis.git (push)
+origin  https://github.com/melonstone/genesis_academy.git (fetch)
+origin  https://github.com/melonstone/genesis_academy.git (push)
 
 
 clear 화면 지우기
 
-git config -list
-
+git config --list
 diff.astextplain.textconv=astextplain
 filter.lfs.clean=git-lfs clean -- %f
 filter.lfs.smudge=git-lfs smudge -- %f
@@ -74,6 +73,8 @@ pull.rebase=false
 credential.helper=manager
 credential.https://dev.azure.com.usehttppath=true
 init.defaultbranch=master
+user.email=kyscoo@naver.com
+user.name=melonstone
 core.repositoryformatversion=0
 core.filemode=false
 core.bare=false
@@ -82,9 +83,9 @@ core.symlinks=false
 core.ignorecase=true
 user.name=melonstone
 email.name=kyscoo@naver.com
-remote.origin.url=https://github.com/melonstone/genesis.git
+remote.origin.url=https://github.com/melonstone/genesis_academy.git
 remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
-
+(END)
 
 // 5. 스테이징
 git add .
@@ -97,7 +98,7 @@ git push origin master
 
 // 8. 인증이 되어야 푸쉬가 완료된다.
 window => 설정 => 자격증명 검색 => window 자격증명관리를 클릭
-github 웹주소가 있고 본인의 user.name user.password가 저장되어 관리된다.
+github 웹주소가 있고(일반 자격 증명) 본인의 user.name user.password가 저장되어 관리된다.
 한 컴퓨터에서 여러 사용자가 사용시 추가 등록해서 사용가능하다.
 
 // 9. 깃허브에서 새로고침 올라온파일 확인
@@ -108,6 +109,6 @@ github 웹주소가 있고 본인의 user.name user.password가 저장되어 관
 // 12. Github Pages => 아래 중간에 => Branch => master => save 클릭 => 1분~3분 대기 => 새로고침
 // 13. 상단에 배포주소가 나타난다. 
         Your site is live at
-        https://melonstone.github.io/genesis/
+        https://melonstone.github.io/genesis_academy/
         Visit Site 클릭 
         배포된 홈페이지 브라우저에 나타난다.

@@ -319,6 +319,7 @@
             let sizeX = 100;  // 드래그 길이
             let offsetL =   slideWrap.offset().left;  // 318 
             let slideWidth;
+            let n = slide.length; // 10개
             // slideWrap.offset().left 좌측 좌표값
             // console.log(  slideWrap.offset().left );
 
@@ -329,24 +330,39 @@
             function resizeFn(){
                 winW = $(window).innerWidth(); // 창크기 값을 계속 보여준다.
                 // 1. 창너비 1642px 이하에서 padding-left 0으로 설정
-                if(winW > 1642){
-                    slideWidth = (section2Container.innerWidth()-198+20+20)/3;
-                }
-                else{
+                if(winW <= 1642){
                     // 1280 초과에서는 슬라이드 3개
                     // 1280 이하에서는 슬라이드 1개만 노출
                     if(winW > 1280){
                         slideWidth = (section2Container.innerWidth())/3;
+                        // 페이지 버튼 제어(개수) 8인 경우 / 10개인 경우
+                        n = slide.length-2; // 8 = 10-2
+                        pageBtn.css({ display: 'none'});
+                        for (let i=0; i<=8; i++){ 
+                            pageBtn.eq(i).css({ display: 'block'}); // 8개 보임
+                        }
+                        cnt=0;
                     }
                     else{
-                    slideWidth = (section2Container.innerWidth())/1;
+                        slideWidth = (section2Container.innerWidth())/1;
+                        // 페이지 버튼 제어(개수) 8인 경우 / 10개인 경우
+                        n = slide.length;
+                            pageBtn.css({ display: 'block'}); // 10개 모두 보임
+                            cnt=0;
                     }
                 }
+                else{ // 창너비 1642 초과
+                    slideWidth = (section2Container.innerWidth()-198+20+20)/3;
+                }
                 
+
                 slideWrap.css({width: slideWidth*10 });
                 slide.css({width: slideWidth, height: slideWidth*heightRate });
                 slideH3.css({fontSize: slideWidth*0.084758371 });
                 slideH4.css({fontSize: slideWidth*0.035687735 });
+                // // 페이지 버튼 제어(개수) 8인 경우 / 10개인 경우
+                // pageBtn.eq(8).css({ display: 'none' });
+                // pageBtn.eq(9).css({ display: 'none' });
                 mainSlide(); // 슬라이드에 슬라이드너비 전달하기 위해 호출
             }
            
